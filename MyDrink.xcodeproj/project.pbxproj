@@ -11,6 +11,19 @@
 		CF8EDA282953129B007B4F39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EDA272953129B007B4F39 /* ContentView.swift */; };
 		CF8EDA2A2953129C007B4F39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8EDA292953129C007B4F39 /* Assets.xcassets */; };
 		CF8EDA2D2953129C007B4F39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8EDA2C2953129C007B4F39 /* Preview Assets.xcassets */; };
+		CFA065272953165B00F9820F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA065262953165B00F9820F /* HomeView.swift */; };
+		CFA065292953166E00F9820F /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA065282953166E00F9820F /* CategoriesView.swift */; };
+		CFA0652B2953168200F9820F /* NewDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0652A2953168200F9820F /* NewDrinkView.swift */; };
+		CFA0652D2953169200F9820F /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0652C2953169200F9820F /* FavoritesView.swift */; };
+		CFA0652F2953169F00F9820F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0652E2953169F00F9820F /* SettingsView.swift */; };
+		CFA065312953176300F9820F /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA065302953176300F9820F /* TabBar.swift */; };
+		CFA0654329531C1300F9820F /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0654229531C1300F9820F /* DrinkModel.swift */; };
+		CFA065452953290900F9820F /* DrinksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA065442953290900F9820F /* DrinksResponse.swift */; };
+		CFA0654729532AEA00F9820F /* DrinkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0654629532AEA00F9820F /* DrinkEndpoint.swift */; };
+		CFA0654A29532DB000F9820F /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0654929532DB000F9820F /* APIError.swift */; };
+		CFA0654D29532EA100F9820F /* DrinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0654C29532EA100F9820F /* DrinkService.swift */; };
+		CFA065502953330500F9820F /* ResultState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0654F2953330500F9820F /* ResultState.swift */; };
+		CFA065522953335B00F9820F /* DrinksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA065512953335B00F9820F /* DrinksViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +32,19 @@
 		CF8EDA272953129B007B4F39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CF8EDA292953129C007B4F39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF8EDA2C2953129C007B4F39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CFA065262953165B00F9820F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CFA065282953166E00F9820F /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		CFA0652A2953168200F9820F /* NewDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDrinkView.swift; sourceTree = "<group>"; };
+		CFA0652C2953169200F9820F /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		CFA0652E2953169F00F9820F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CFA065302953176300F9820F /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		CFA0654229531C1300F9820F /* DrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkModel.swift; sourceTree = "<group>"; };
+		CFA065442953290900F9820F /* DrinksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksResponse.swift; sourceTree = "<group>"; };
+		CFA0654629532AEA00F9820F /* DrinkEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkEndpoint.swift; sourceTree = "<group>"; };
+		CFA0654929532DB000F9820F /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		CFA0654C29532EA100F9820F /* DrinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkService.swift; sourceTree = "<group>"; };
+		CFA0654F2953330500F9820F /* ResultState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultState.swift; sourceTree = "<group>"; };
+		CFA065512953335B00F9820F /* DrinksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +77,11 @@
 		CF8EDA242953129A007B4F39 /* MyDrink */ = {
 			isa = PBXGroup;
 			children = (
-				CF8EDA252953129A007B4F39 /* MyDrinkApp.swift */,
-				CF8EDA272953129B007B4F39 /* ContentView.swift */,
+				CFA06520295315CC00F9820F /* Views */,
+				CFA06521295315D600F9820F /* ViewModels */,
+				CFA0654129531BF900F9820F /* Models */,
 				CF8EDA292953129C007B4F39 /* Assets.xcassets */,
+				CF8EDA252953129A007B4F39 /* MyDrinkApp.swift */,
 				CF8EDA2B2953129C007B4F39 /* Preview Content */,
 			);
 			path = MyDrink;
@@ -65,6 +93,89 @@
 				CF8EDA2C2953129C007B4F39 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CFA06520295315CC00F9820F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CFA065232953160500F9820F /* Main */,
+				CFA065242953160C00F9820F /* Detail */,
+				CFA065252953161800F9820F /* components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CFA06521295315D600F9820F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CFA065512953335B00F9820F /* DrinksViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CFA065232953160500F9820F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CF8EDA272953129B007B4F39 /* ContentView.swift */,
+				CFA065302953176300F9820F /* TabBar.swift */,
+				CFA065262953165B00F9820F /* HomeView.swift */,
+				CFA065282953166E00F9820F /* CategoriesView.swift */,
+				CFA0652A2953168200F9820F /* NewDrinkView.swift */,
+				CFA0652C2953169200F9820F /* FavoritesView.swift */,
+				CFA0652E2953169F00F9820F /* SettingsView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CFA065242953160C00F9820F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		CFA065252953161800F9820F /* components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		CFA0654129531BF900F9820F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CFA0654E295332F000F9820F /* States */,
+				CFA0654B29532E8F00F9820F /* Service */,
+				CFA0654829532C3E00F9820F /* Error */,
+				CFA0654229531C1300F9820F /* DrinkModel.swift */,
+				CFA065442953290900F9820F /* DrinksResponse.swift */,
+				CFA0654629532AEA00F9820F /* DrinkEndpoint.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CFA0654829532C3E00F9820F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				CFA0654929532DB000F9820F /* APIError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		CFA0654B29532E8F00F9820F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CFA0654C29532EA100F9820F /* DrinkService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CFA0654E295332F000F9820F /* States */ = {
+			isa = PBXGroup;
+			children = (
+				CFA0654F2953330500F9820F /* ResultState.swift */,
+			);
+			path = States;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +248,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFA065502953330500F9820F /* ResultState.swift in Sources */,
+				CFA0652F2953169F00F9820F /* SettingsView.swift in Sources */,
+				CFA065292953166E00F9820F /* CategoriesView.swift in Sources */,
+				CFA0652B2953168200F9820F /* NewDrinkView.swift in Sources */,
+				CFA065312953176300F9820F /* TabBar.swift in Sources */,
+				CFA0652D2953169200F9820F /* FavoritesView.swift in Sources */,
+				CFA0654A29532DB000F9820F /* APIError.swift in Sources */,
+				CFA0654D29532EA100F9820F /* DrinkService.swift in Sources */,
+				CFA065452953290900F9820F /* DrinksResponse.swift in Sources */,
+				CFA065272953165B00F9820F /* HomeView.swift in Sources */,
 				CF8EDA282953129B007B4F39 /* ContentView.swift in Sources */,
 				CF8EDA262953129A007B4F39 /* MyDrinkApp.swift in Sources */,
+				CFA0654729532AEA00F9820F /* DrinkEndpoint.swift in Sources */,
+				CFA0654329531C1300F9820F /* DrinkModel.swift in Sources */,
+				CFA065522953335B00F9820F /* DrinksViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
