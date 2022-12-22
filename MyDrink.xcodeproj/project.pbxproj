@@ -24,6 +24,10 @@
 		CFA0654D29532EA100F9820F /* DrinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0654C29532EA100F9820F /* DrinkService.swift */; };
 		CFA065502953330500F9820F /* ResultState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0654F2953330500F9820F /* ResultState.swift */; };
 		CFA065522953335B00F9820F /* DrinksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA065512953335B00F9820F /* DrinksViewModel.swift */; };
+		CFA06555295337B400F9820F /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = CFA06554295337B400F9820F /* URLImage */; };
+		CFA06557295337B400F9820F /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = CFA06556295337B400F9820F /* URLImageStore */; };
+		CFA06559295342F200F9820F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA06558295342F200F9820F /* ErrorView.swift */; };
+		CFA0655B2953465800F9820F /* DrinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0655A2953465800F9820F /* DrinksView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,8 @@
 		CFA0654C29532EA100F9820F /* DrinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkService.swift; sourceTree = "<group>"; };
 		CFA0654F2953330500F9820F /* ResultState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultState.swift; sourceTree = "<group>"; };
 		CFA065512953335B00F9820F /* DrinksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksViewModel.swift; sourceTree = "<group>"; };
+		CFA06558295342F200F9820F /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		CFA0655A2953465800F9820F /* DrinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFA06557295337B400F9820F /* URLImageStore in Frameworks */,
+				CFA06555295337B400F9820F /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +106,8 @@
 		CFA06520295315CC00F9820F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CFA06558295342F200F9820F /* ErrorView.swift */,
+				CFA0655A2953465800F9820F /* DrinksView.swift */,
 				CFA065232953160500F9820F /* Main */,
 				CFA065242953160C00F9820F /* Detail */,
 				CFA065252953161800F9820F /* components */,
@@ -194,6 +204,10 @@
 			dependencies = (
 			);
 			name = MyDrink;
+			packageProductDependencies = (
+				CFA06554295337B400F9820F /* URLImage */,
+				CFA06556295337B400F9820F /* URLImageStore */,
+			);
 			productName = MyDrink;
 			productReference = CF8EDA222953129A007B4F39 /* MyDrink.app */;
 			productType = "com.apple.product-type.application";
@@ -222,6 +236,9 @@
 				Base,
 			);
 			mainGroup = CF8EDA192953129A007B4F39;
+			packageReferences = (
+				CFA06553295337B400F9820F /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = CF8EDA232953129A007B4F39 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,12 +274,14 @@
 				CFA0654A29532DB000F9820F /* APIError.swift in Sources */,
 				CFA0654D29532EA100F9820F /* DrinkService.swift in Sources */,
 				CFA065452953290900F9820F /* DrinksResponse.swift in Sources */,
+				CFA0655B2953465800F9820F /* DrinksView.swift in Sources */,
 				CFA065272953165B00F9820F /* HomeView.swift in Sources */,
 				CF8EDA282953129B007B4F39 /* ContentView.swift in Sources */,
 				CF8EDA262953129A007B4F39 /* MyDrinkApp.swift in Sources */,
 				CFA0654729532AEA00F9820F /* DrinkEndpoint.swift in Sources */,
 				CFA0654329531C1300F9820F /* DrinkModel.swift in Sources */,
 				CFA065522953335B00F9820F /* DrinksViewModel.swift in Sources */,
+				CFA06559295342F200F9820F /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +480,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CFA06553295337B400F9820F /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CFA06554295337B400F9820F /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFA06553295337B400F9820F /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		CFA06556295337B400F9820F /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFA06553295337B400F9820F /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CF8EDA1A2953129A007B4F39 /* Project object */;
 }
