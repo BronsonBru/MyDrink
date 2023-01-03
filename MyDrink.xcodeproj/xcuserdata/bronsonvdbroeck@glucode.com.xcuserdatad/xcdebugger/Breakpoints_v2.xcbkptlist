@@ -72,14 +72,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "269D659F-7E75-4647-871F-E2E61E61A052"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDrink/Views/Main/HomeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "CardView(item:)"
             landmarkType = "7">
          </BreakpointContent>

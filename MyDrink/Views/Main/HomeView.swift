@@ -2,9 +2,16 @@ import SwiftUI
 import URLImage
 
 struct HomeView: View {
+    // animation properties
+    @State var currentItem: DummyDrink?
+    @State var showDetailPage: Bool = false
+    //match geometery
+    @Namespace var animation
+    @State var animationView: Bool = false
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 30) {
+            VStack(spacing: 0) {
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Drinks")
@@ -24,14 +31,41 @@ struct HomeView: View {
                     }
                 }
                 .padding(.horizontal)
+                .padding(.bottom)
+
 
                 ForEach(dummyItems) {item in
-                    CardView(item: item)
+                    Button {
+                        withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
+                            currentItem = item
+                            showDetailPage = true
+                        }
+                    } label: {
+                        CardView(item: item)
+                        // for matched geometry effect
+                            .scaleEffect(currentItem?.id == item.id && showDetailPage ? 1 : 0.93)
+                    }
+                    .buttonStyle(ScaledButtonStyle())
+                    .opacity(showDetailPage ? (currentItem?.id == item.id ? 1 : 0) : 1)
                 }
             }
-            .padding(.vertical)
+            .padding(.vertical, 5)
+        }
+        .overlay {
+            if let currentItem = currentItem, showDetailPage {
+                DetailView(item: currentItem)
+                    .ignoresSafeArea(.container, edges: .top)
+            }
+        }
+        .background(alignment: .top) {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(Color(.black))
+                .frame(height: animationView ? nil : 350, alignment: .top)
+                .opacity(animationView ? 1 : 0)
+                .ignoresSafeArea()
         }
     }
+    //CardView
     @ViewBuilder
     func CardView(item: DummyDrink) -> some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -50,23 +84,28 @@ struct HomeView: View {
 
 
                 LinearGradient(colors: [
-                    .gray.opacity(1),
-                    .gray.opacity(0.5),
-                    .gray.opacity(0.2),
-                    .gray.opacity(0),
-                    .clear
+                    .black.opacity(1),
+                    .black.opacity(0.3),
+                    .black.opacity(0.25),
+                    .black.opacity(0.15),
+                    .gray.opacity(0.3),
+                    .black.opacity(1),
                 ], startPoint: .bottom, endPoint: .top)
-//                .cornerRadius(15)
+                .clipShape(CustomCorner(corners: [.topLeft,.topRight], radius: 15))
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text(item.drinkName.uppercased())
                         .font(.callout)
                         .fontWeight(.semibold)
+                        .foregroundColor(.white)
 
                     Text(item.drinkDescription)
                         .font(.largeTitle.bold())
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.leading)
                 }
                 .padding()
+                .offset(y: currentItem?.id == item.id && animationView ? safeArea().top : 0)
             }
             HStack(spacing: 12) {
                 Image(item.artwork)
@@ -78,24 +117,25 @@ struct HomeView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(item.drinkName.uppercased())
                         .fontWeight(.bold)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white)
 
                     Text(item.bannerTitle.uppercased())
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white)
 
                     Text(item.drinkDescription.uppercased())
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white)
                 }
+                .foregroundColor(.primary)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
                 Button {
 
                 } label: {
-                    Text("GET")
+                    Image(systemName: "heart")
                         .fontWeight(.bold)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.red)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 20)
                         .background{
@@ -109,16 +149,82 @@ struct HomeView: View {
 
         .background{
             RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(Color(.systemGray2))
+                .fill(Color(.black))
         }
-        .padding(.horizontal)
+        .matchedGeometryEffect(id: item.id, in: animation)
     }
 
+    //DetailView
+    func DetailView(item: DummyDrink) -> some View {
+        ScrollView(.vertical, showsIndicators: false){
+            VStack {
+                CardView(item: item)
+                    .scaleEffect(animationView ? 1 : 0.93)
+
+                VStack(spacing: 15) {
+
+                }
+                .padding()
+            }
+        }
+        .overlay(alignment: .topTrailing, content: {
+            Button {
+                //closing view
+                withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
+                    animationView = false
+                }
+                withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7).delay(0.05)) {
+                    currentItem = nil
+                    showDetailPage = false
+                }
+
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .font(.title)
+                    .foregroundColor(.white)
+            }
+            .padding()
+            .padding(.top, safeArea().top)
+            .offset(y: -10)
+            .opacity(animationView ? 1 : 0)
+        })
+        .onAppear {
+            withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
+                animationView = true
+            }
+        }
+        .transition(.identity)
+    }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
 
+    }
+}
+
+
+//scaled button Style
+struct ScaledButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.94 : 1)
+            .animation(.easeInOut, value: configuration.isPressed)
+    }
+}
+
+
+// safe are value
+extension View {
+    func safeArea() -> UIEdgeInsets {
+        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return .zero
+        }
+
+        guard let safeArea = screen.windows.first?.safeAreaInsets else {
+            return .zero
+        }
+        return safeArea
     }
 }
