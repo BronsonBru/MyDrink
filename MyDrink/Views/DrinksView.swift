@@ -3,7 +3,7 @@ import URLImage
 
 struct DrinksView: View {
 
-    let drinks: Drinks
+    let drinks: Drink
 
     var body: some View {
         HStack {
@@ -23,7 +23,7 @@ struct DrinksView: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(drinks.strDrink ?? "")
+                Text(drinks.name ?? "")
                     .foregroundColor(.black)
                     .font(.system(size: 18, weight: .semibold))
                 Text(drinks.strCategory ?? "")
@@ -45,6 +45,6 @@ struct PlaceHolderImageView: View {
 
 struct DrinksView_Previews: PreviewProvider {
     static var previews: some View {
-        DrinksView(drinks: Drinks.dummyData)
+        DrinksView(drinks: Drink.dummyData)
     }
 }

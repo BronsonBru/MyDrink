@@ -1,10 +1,3 @@
-//
-//  TabBar.swift
-//  MyDrink
-//
-//  Created by Bronson van den Broeck on 2022/12/21.
-//
-
 import SwiftUI
 
 struct TabBar: View {
@@ -15,24 +8,14 @@ struct TabBar: View {
                     Label("Home", systemImage: "house")
                 }
 
-            CategoriesView()
+            SearchView()
                 .tabItem {
-                    Label("Categories", systemImage: "square.fill.text.grid.1x2")
-                }
-
-            NewDrinkView()
-                .tabItem {
-                    Label("New", systemImage: "plus")
+                    Label("Search", systemImage: "magnifyingglass")
                 }
 
             FavoritesView()
                 .tabItem {
                     Label("Favourites", systemImage: "heart")
-                }
-
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
                 }
         }
     }
