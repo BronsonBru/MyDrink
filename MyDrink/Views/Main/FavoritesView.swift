@@ -3,7 +3,7 @@ import SwiftUI
 struct FavoritesView: View {
     var body: some View {
         List {
-            DrinksView(drinks: Drink.dummyData)
+//            DrinksView(drinks: Drink.dummyData)
         }
     }
 }

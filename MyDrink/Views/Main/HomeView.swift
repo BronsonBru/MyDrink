@@ -3,7 +3,9 @@ import URLImage
 
 struct HomeView: View {
     // animation properties
-    @State var currentItem: DummyDrink?
+    @ObservedObject private var viewModel = DrinkViewModel()
+
+    @State var currentItem: DrinksResponse?
     @State var showDetailPage: Bool = false
     //match geometery
     @Namespace var animation
@@ -36,24 +38,29 @@ struct HomeView: View {
                 .padding(.bottom)
                 .opacity(showDetailPage ? 0 : 1)
 
+                VStack {
 
-                ForEach(dummyItems) {item in
-                    Button {
-                        withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
-                            currentItem = item
-                            showDetailPage = true
+                        Button {
+                            withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
+                                showDetailPage = true
+                                currentItem = viewModel.randomDrinkResult
 
+                            }
+                        } label: {
+                            CardView(item: viewModel.randomDrinkResult)
+                            // for matched geometry effect
+                                .scaleEffect(currentItem?.id == viewModel.randomDrinkResult.id && showDetailPage ? 1 : 0.93)
                         }
-                    } label: {
-                        CardView(item: item)
-                        // for matched geometry effect
-                            .scaleEffect(currentItem?.id == item.id && showDetailPage ? 1 : 0.93)
+                        .buttonStyle(ScaledButtonStyle())
+                        .opacity(showDetailPage ? (currentItem?.id == viewModel.randomDrinkResult.id ? 1 : 0) : 1)
                     }
-                    .buttonStyle(ScaledButtonStyle())
-                    .opacity(showDetailPage ? (currentItem?.id == item.id ? 1 : 0) : 1)
-                }
+
+                //end
             }
             .padding(.vertical, 5)
+        }
+        .onAppear {
+            viewModel.fetchRandomResults()
         }
         .overlay {
             if let currentItem = currentItem, showDetailPage {
@@ -71,14 +78,14 @@ struct HomeView: View {
     }
     //CardView
     @ViewBuilder
-    func CardView(item: DummyDrink) -> some View {
+    func CardView(item: DrinksResponse) -> some View {
         VStack(alignment: .leading, spacing: 15) {
             ZStack(alignment: .topLeading) {
 
                 //banner image
                 GeometryReader{proxy in
                     let size = proxy.size
-                    Image(item.artwork)
+                    Image(item.strDrinkThumb)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: size.width, height: size.height)
@@ -98,12 +105,12 @@ struct HomeView: View {
                 .clipShape(CustomCorner(corners: [.topLeft,.topRight], radius: 15))
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(item.drinkName.uppercased())
+                    Text(item.name.uppercased())
                         .font(.callout)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
 
-                    Text(item.drinkDescription)
+                    Text(item.strInstructions)
                         .font(.largeTitle.bold())
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
@@ -112,22 +119,22 @@ struct HomeView: View {
                 .offset(y: currentItem?.id == item.id && animationView ? safeArea().top : 0)
             }
             HStack(spacing: 12) {
-                Image(item.artwork)
+                Image(item.strDrinkThumb)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 60, height: 60)
                     .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(item.drinkName.uppercased())
+                    Text(item.name.uppercased())
                         .fontWeight(.bold)
                         .foregroundColor(.white)
 
-                    Text(item.bannerTitle.uppercased())
+                    Text(item.name.uppercased())
                         .font(.caption)
                         .foregroundColor(.white)
 
-                    Text(item.drinkDescription.uppercased())
+                    Text(item.strCategory.uppercased())
                         .font(.caption)
                         .foregroundColor(.white)
                 }
@@ -159,7 +166,7 @@ struct HomeView: View {
     }
 
     //DetailView
-    func DetailView(item: DummyDrink) -> some View {
+    func DetailView(item: DrinksResponse) -> some View {
         ScrollView(.vertical, showsIndicators: false){
             VStack {
                 CardView(item: item)
@@ -180,16 +187,16 @@ struct HomeView: View {
 
                 HStack{
                     VStack(alignment: .leading){
-                        Text(item.strIngredient1)
-                        Text(item.strIngredient2)
-                        Text(item.strIngredient3)
+                        Text(item.strIngredient1 ?? "")
+                        Text(item.strIngredient2 ?? "")
+                        Text(item.strIngredient3 ?? "")
                     }
                         .foregroundColor(.white)
                         .padding()
                     VStack(alignment: .leading) {
-                        Text(item.strMeasure1)
-                        Text(item.strMeasure2)
-                        Text(item.strMeasure3)
+                        Text(item.strMeasure1 ?? "")
+                        Text(item.strMeasure2 ?? "")
+                        Text(item.strMeasure3 ?? "")
                     }
 
                         .padding()

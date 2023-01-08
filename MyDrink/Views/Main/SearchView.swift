@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct SearchView: View {
+    
     @ObservedObject private var viewModel = DrinkViewModel()
     @State private var searchItem = ""
-    @State private var filteredDrinks: [Drink] = []
+    @State private var filteredDrinks: [DrinksResponse] = []
 
     var body: some View {
         NavigationView {
@@ -18,27 +19,29 @@ struct SearchView: View {
             .foregroundColor(.gray)
             .navigationTitle("Search")
         }
-        .searchable(text: $searchItem) {
-            ForEach(filteredDrinks) { drink in
-                HStack {
-                   
-                    VStack(alignment: .leading) {
-                        Text(drink.name ?? "")
-                            .font(.headline)
-                        Text(drink.strCategory ?? "")
-                            .font(.subheadline)
-                        Text(drink.strAlcoholic ?? "")
-                            .font(.subheadline)
-                    }
-                }
-
-            }
+        .searchable(text: $viewModel.searchText) {
+//            List {
+//                ForEach(viewModel.searchResults, id:\.self) { drink in
+//                    HStack {
+//
+//                        VStack(alignment: .leading) {
+//                            Text(drink.name ?? "")
+//                                .font(.headline)
+//                            Text(drink.strCategory ?? "")
+//                                .font(.subheadline)
+//                            Text(drink.strAlcoholic ?? "")
+//                                .font(.subheadline)
+//                        }
+//                    }
+//
+//                }
+//            }
         }
-        .onChange(of: searchItem) { searchItem in
-            filteredDrinks = viewModel.drinkResponse?.drinks.filter({ drink in
-                drink.name.contains(searchItem)
-            }) ?? []
-        }
+//        .onChange(of: viewModel.searchText) { searchItem in
+//            filteredDrinks = viewModel.searchResults.filter({ drink in
+//
+//            }) ?? []
+//        }
 
     }
 }

@@ -24,9 +24,6 @@
 		CFF698FB296459B600108D25 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF698FA296459B600108D25 /* DummyData.swift */; };
 		CFF698FD29645C9300108D25 /* CustomCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF698FC29645C9300108D25 /* CustomCorner.swift */; };
 		CFF698FF2965908D00108D25 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF698FE2965908D00108D25 /* SearchView.swift */; };
-		CFF6990229659DE200108D25 /* DrinksNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF6990129659DE200108D25 /* DrinksNetworkManager.swift */; };
-		CFF6990529659FC500108D25 /* LocalDrinkingModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF6990429659FC500108D25 /* LocalDrinkingModal.swift */; };
-		CFF699082965A10700108D25 /* DrinkingServiceCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF699072965A10700108D25 /* DrinkingServiceCall.swift */; };
 		CFF6990E2965B68900108D25 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF6990D2965B68900108D25 /* test.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,9 +44,6 @@
 		CFF698FA296459B600108D25 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		CFF698FC29645C9300108D25 /* CustomCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorner.swift; sourceTree = "<group>"; };
 		CFF698FE2965908D00108D25 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		CFF6990129659DE200108D25 /* DrinksNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksNetworkManager.swift; sourceTree = "<group>"; };
-		CFF6990429659FC500108D25 /* LocalDrinkingModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDrinkingModal.swift; sourceTree = "<group>"; };
-		CFF699072965A10700108D25 /* DrinkingServiceCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkingServiceCall.swift; sourceTree = "<group>"; };
 		CFF6990D2965B68900108D25 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +79,6 @@
 		CF8EDA242953129A007B4F39 /* MyDrink */ = {
 			isa = PBXGroup;
 			children = (
-				CFF6990029659DB200108D25 /* ReenensNetworkSetup */,
 				CFA06520295315CC00F9820F /* Views */,
 				CFA06521295315D600F9820F /* ViewModels */,
 				CFA0654129531BF900F9820F /* Models */,
@@ -160,32 +153,6 @@
 				CFF698FA296459B600108D25 /* DummyData.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		CFF6990029659DB200108D25 /* ReenensNetworkSetup */ = {
-			isa = PBXGroup;
-			children = (
-				CFF699062965A0DF00108D25 /* servicegroup */,
-				CFF6990329659EA000108D25 /* Model */,
-			);
-			path = ReenensNetworkSetup;
-			sourceTree = "<group>";
-		};
-		CFF6990329659EA000108D25 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CFF6990129659DE200108D25 /* DrinksNetworkManager.swift */,
-				CFF6990429659FC500108D25 /* LocalDrinkingModal.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CFF699062965A0DF00108D25 /* servicegroup */ = {
-			isa = PBXGroup;
-			children = (
-				CFF699072965A10700108D25 /* DrinkingServiceCall.swift */,
-			);
-			path = servicegroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,15 +234,12 @@
 			files = (
 				CFA0655F2954A2AD00F9820F /* SimpleDrinkModel.swift in Sources */,
 				CFF6990E2965B68900108D25 /* test.swift in Sources */,
-				CFF699082965A10700108D25 /* DrinkingServiceCall.swift in Sources */,
-				CFF6990529659FC500108D25 /* LocalDrinkingModal.swift in Sources */,
 				CFA065312953176300F9820F /* TabBar.swift in Sources */,
 				CFA0652D2953169200F9820F /* FavoritesView.swift in Sources */,
 				CFF698FD29645C9300108D25 /* CustomCorner.swift in Sources */,
 				CFA065452953290900F9820F /* DrinksResponse.swift in Sources */,
 				CFA0655D29549C2800F9820F /* NetworkManger.swift in Sources */,
 				CFA0655B2953465800F9820F /* DrinksView.swift in Sources */,
-				CFF6990229659DE200108D25 /* DrinksNetworkManager.swift in Sources */,
 				CFA065272953165B00F9820F /* HomeView.swift in Sources */,
 				CFF698FB296459B600108D25 /* DummyData.swift in Sources */,
 				CFF698FF2965908D00108D25 /* SearchView.swift in Sources */,
