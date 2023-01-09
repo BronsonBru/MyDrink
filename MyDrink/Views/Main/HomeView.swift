@@ -22,20 +22,15 @@ struct HomeView: View {
                             .font(.callout)
                             .foregroundColor(.gray)
 
-                        Text("Today")
+                        Text("Recommended")
                             .font(.largeTitle.bold())
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                    Button {
-
-                    } label: {
-                        Image(systemName: "person.circle.fill")
-                            .font(.largeTitle)
-                    }
+                 
                 }
                 .padding(.horizontal)
-                .padding(.bottom)
+                .padding(.bottom, 5)
                 .opacity(showDetailPage ? 0 : 1)
 
                 VStack {
@@ -53,7 +48,25 @@ struct HomeView: View {
                         }
                         .buttonStyle(ScaledButtonStyle())
                         .opacity(showDetailPage ? (currentItem?.id == viewModel.randomDrinkResult.id ? 1 : 0) : 1)
+
+
+
                     }
+
+                HStack{
+                        NavigationLink(destination: HomeView())
+                    {
+                        Text("Get a new drink!")
+                            .font(.headline)
+                    }
+                    .padding(15)
+                    .foregroundColor(.white)
+                    .background(Color.accentColor)
+                    .cornerRadius(20)
+                    .padding(30)
+                    .shadow(color: .black.opacity(0.3), radius: 3, x: 3, y: 3)
+                    .opacity(showDetailPage ? 0 : 1)
+                }
 
                 //end
             }
@@ -85,11 +98,25 @@ struct HomeView: View {
                 //banner image
                 GeometryReader{proxy in
                     let size = proxy.size
-                    Image(item.strDrinkThumb)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: size.width, height: size.height)
-                        .clipShape(CustomCorner(corners: [.topLeft,.topRight], radius: 15))
+                    if let imgURL = item.strDrinkThumb,
+                       let url = URL(string: imgURL) {
+
+                        URLImage(url,
+                                 content: {image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                        })
+//                        .frame(width: 100, height: 100)
+                        .cornerRadius(10)
+                    } else {
+                        PlaceHolderImageView()
+                    }
+//                    Image()
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fill)
+//                        .frame(width: size.width, height: size.height)
+//                        .clipShape(CustomCorner(corners: [.topLeft,.topRight], radius: 15))
                 }
                 .frame(height: 400)
 
@@ -119,11 +146,25 @@ struct HomeView: View {
                 .offset(y: currentItem?.id == item.id && animationView ? safeArea().top : 0)
             }
             HStack(spacing: 12) {
-                Image(item.strDrinkThumb)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
+                if let imgURL = item.strDrinkThumb,
+                   let url = URL(string: imgURL) {
+
+                    URLImage(url,
+                             content: {image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    })
                     .frame(width: 60, height: 60)
-                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                    .cornerRadius(15)
+                } else {
+                    PlaceHolderImageView()
+                }
+//                Image(item.strDrinkThumb)
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fill)
+//                    .frame(width: 60, height: 60)
+//                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(item.name.uppercased())
@@ -252,55 +293,4 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
 
     }
-}
-
-
-//scaled button Style
-struct ScaledButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 0.94 : 1)
-            .animation(.easeInOut, value: configuration.isPressed)
-    }
-}
-
-
-// safe are value
-extension View {
-    func safeArea() -> UIEdgeInsets {
-        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
-            return .zero
-        }
-
-        guard let safeArea = screen.windows.first?.safeAreaInsets else {
-            return .zero
-        }
-        return safeArea
-    }
-
-    //scrollview offset
-    func offset(offset: Binding<CGFloat>)-> some View {
-        return self
-            .overlay {
-                GeometryReader{ proxy in
-                    let minY = proxy.frame(in: .named("SCROLL")).minY
-
-                    Color.clear
-                        .preference(key: OffsetKey.self, value: minY)
-                }
-                .onPreferenceChange(OffsetKey.self) { value in
-                    offset.wrappedValue = value
-                }
-            }
-    }
-}
-
-//offset key
-struct OffsetKey: PreferenceKey {
-    static var defaultValue: CGFloat = 0
-
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
-    }
-
 }

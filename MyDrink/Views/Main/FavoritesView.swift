@@ -2,9 +2,25 @@ import SwiftUI
 
 struct FavoritesView: View {
     var body: some View {
-        List {
-//            DrinksView(drinks: Drink.dummyData)
-        }
+        VStack(spacing: 0) {
+            HStack(alignment: .bottom) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("My Drinks")
+                        .font(.callout)
+                        .foregroundColor(.gray)
+
+                    Text("Favourites")
+                        .font(.largeTitle.bold())
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+            }.padding(.horizontal)
+             .padding(.bottom, 5)
+            List {
+                DrinksView(drinks: DrinksResponse.dummyData)
+            }
+            .navigationTitle("Favourites")
+        }.padding(.vertical, 5)
     }
 }
 

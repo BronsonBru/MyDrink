@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "269D659F-7E75-4647-871F-E2E61E61A052"
-            shouldBeEnabled = "No"
+            uuid = "B613B327-7DED-4166-8485-9023C7B25D34"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyDrink/Views/Main/HomeView.swift"
+            filePath = "MyDrink/Models/NetworkManger.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "CardView(item:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "fetchDrinkDetails(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

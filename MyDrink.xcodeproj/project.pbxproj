@@ -21,10 +21,14 @@
 		CFA0655B2953465800F9820F /* DrinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0655A2953465800F9820F /* DrinksView.swift */; };
 		CFA0655D29549C2800F9820F /* NetworkManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0655C29549C2800F9820F /* NetworkManger.swift */; };
 		CFA0655F2954A2AD00F9820F /* SimpleDrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0655E2954A2AD00F9820F /* SimpleDrinkModel.swift */; };
+		CFBA5A24296C440E003303A5 /* FixTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA5A23296C440E003303A5 /* FixTestModel.swift */; };
 		CFF698FB296459B600108D25 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF698FA296459B600108D25 /* DummyData.swift */; };
 		CFF698FD29645C9300108D25 /* CustomCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF698FC29645C9300108D25 /* CustomCorner.swift */; };
 		CFF698FF2965908D00108D25 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF698FE2965908D00108D25 /* SearchView.swift */; };
 		CFF6990E2965B68900108D25 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF6990D2965B68900108D25 /* test.swift */; };
+		CFF69934296AC90000108D25 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF69933296AC90000108D25 /* CardView.swift */; };
+		CFF69937296AD54D00108D25 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF69936296AD54D00108D25 /* UIExtensions.swift */; };
+		CFF69939296AD7BF00108D25 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF69938296AD7BF00108D25 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,10 +45,14 @@
 		CFA0655A2953465800F9820F /* DrinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksView.swift; sourceTree = "<group>"; };
 		CFA0655C29549C2800F9820F /* NetworkManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManger.swift; sourceTree = "<group>"; };
 		CFA0655E2954A2AD00F9820F /* SimpleDrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDrinkModel.swift; sourceTree = "<group>"; };
+		CFBA5A23296C440E003303A5 /* FixTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixTestModel.swift; sourceTree = "<group>"; };
 		CFF698FA296459B600108D25 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		CFF698FC29645C9300108D25 /* CustomCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorner.swift; sourceTree = "<group>"; };
 		CFF698FE2965908D00108D25 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		CFF6990D2965B68900108D25 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		CFF69933296AC90000108D25 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		CFF69936296AD54D00108D25 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		CFF69938296AD7BF00108D25 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,7 @@
 		CF8EDA242953129A007B4F39 /* MyDrink */ = {
 			isa = PBXGroup;
 			children = (
+				CFF69935296AD53200108D25 /* Extensions */,
 				CFA06520295315CC00F9820F /* Views */,
 				CFA06521295315D600F9820F /* ViewModels */,
 				CFA0654129531BF900F9820F /* Models */,
@@ -101,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				CFA0655A2953465800F9820F /* DrinksView.swift */,
+				CFF69933296AC90000108D25 /* CardView.swift */,
+				CFF69938296AD7BF00108D25 /* DetailView.swift */,
 				CFA065232953160500F9820F /* Main */,
 				CFA065242953160C00F9820F /* Detail */,
 				CFA065252953161800F9820F /* components */,
@@ -151,8 +162,17 @@
 				CFA065442953290900F9820F /* DrinksResponse.swift */,
 				CFA0655E2954A2AD00F9820F /* SimpleDrinkModel.swift */,
 				CFF698FA296459B600108D25 /* DummyData.swift */,
+				CFBA5A23296C440E003303A5 /* FixTestModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CFF69935296AD53200108D25 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CFF69936296AD54D00108D25 /* UIExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,14 +254,18 @@
 			files = (
 				CFA0655F2954A2AD00F9820F /* SimpleDrinkModel.swift in Sources */,
 				CFF6990E2965B68900108D25 /* test.swift in Sources */,
+				CFF69939296AD7BF00108D25 /* DetailView.swift in Sources */,
 				CFA065312953176300F9820F /* TabBar.swift in Sources */,
 				CFA0652D2953169200F9820F /* FavoritesView.swift in Sources */,
+				CFF69934296AC90000108D25 /* CardView.swift in Sources */,
 				CFF698FD29645C9300108D25 /* CustomCorner.swift in Sources */,
+				CFBA5A24296C440E003303A5 /* FixTestModel.swift in Sources */,
 				CFA065452953290900F9820F /* DrinksResponse.swift in Sources */,
 				CFA0655D29549C2800F9820F /* NetworkManger.swift in Sources */,
 				CFA0655B2953465800F9820F /* DrinksView.swift in Sources */,
 				CFA065272953165B00F9820F /* HomeView.swift in Sources */,
 				CFF698FB296459B600108D25 /* DummyData.swift in Sources */,
+				CFF69937296AD54D00108D25 /* UIExtensions.swift in Sources */,
 				CFF698FF2965908D00108D25 /* SearchView.swift in Sources */,
 				CF8EDA282953129B007B4F39 /* ContentView.swift in Sources */,
 				CF8EDA262953129A007B4F39 /* MyDrinkApp.swift in Sources */,

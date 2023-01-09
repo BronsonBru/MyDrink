@@ -16,8 +16,8 @@ struct DrinksView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                 })
-                .frame(width: 100, height: 100)
-                .cornerRadius(10)
+                .frame(width: 80, height: 80)
+                .cornerRadius(15)
             } else {
                 PlaceHolderImageView()
             }
@@ -30,6 +30,15 @@ struct DrinksView: View {
                     .foregroundColor(.gray)
                     .font(.footnote)
             }
+            Spacer()
+            Button {
+
+            } label: {
+                Image(systemName: "heart")
+                    .padding()
+                    .foregroundColor(Color.red)
+            }
+
         }
     }
 }
@@ -39,12 +48,12 @@ struct PlaceHolderImageView: View {
         Image(systemName: "photo.fill")
             .foregroundColor(.white)
             .background(Color.gray)
-            .frame(width: 100, height: 100)
+            .frame(width: 80, height: 80)
     }
 }
 
-//struct DrinksView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DrinksView(drinks: DrinksResponse.init(from: ))
-//    }
-//}
+struct DrinksView_Previews: PreviewProvider {
+    static var previews: some View {
+        DrinksView(drinks: DrinksResponse.dummyData)
+    }
+}
