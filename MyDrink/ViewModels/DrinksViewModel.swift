@@ -5,7 +5,7 @@ class DrinkViewModel: ObservableObject, Identifiable {
     @Published var searchResults = DrinksResponse()
     @Published var searchText = String()
     let network = MyDrinkNetworkManger()
-    var randomDrinkResult = DrinksResponse()
+    @Published var randomDrinkResult = DrinksResponse()
 
     func fetchSearchResults() {
         network.fetchDrinksSearch(search: searchText) { result in

@@ -3,12 +3,12 @@ import SwiftUI
 struct TabBar: View {
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(drinks: DrinksResponse.dummyData)
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
 
-            SearchView()
+            SearchViewTest()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }

@@ -34,7 +34,7 @@ struct DrinksView: View {
             Button {
 
             } label: {
-                Image(systemName: "heart")
+                Image(systemName: "heart.fill")
                     .padding()
                     .foregroundColor(Color.red)
             }

@@ -7,14 +7,14 @@ protocol MyDrinkListRetreviable {
 class MyDrinkNetworkManger: MyDrinkListRetreviable {
     static let shared = MyDrinkNetworkManger()
 
-    var cache: [Int: DrinksResponse?] = [:]
-    var drinkInfo: DrinksResponse?
-    var drinkResponse: DrinksResponse?
+    var cache: [Int: DrinksMainResponse?] = [:]
+    var drinkInfo: DrinksMainResponse?
+    var drinkResponse: DrinksMainResponse?
 
 
     func fetchDrinksSearch(search: String, completion: @escaping (DrinksResponse?) -> Void) {
 
-        let baseURL = "www.thecocktaildb.com/api/json/v1/1/search.php?s=\(search)"
+        let baseURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(search)"
         guard let safeURL = URL(string: baseURL) else {
             fatalError("Invalid URL")
         }
@@ -28,7 +28,7 @@ class MyDrinkNetworkManger: MyDrinkListRetreviable {
                 return
             }
             do {
-                let decodedData = try JSONDecoder().decode(DrinksResponse.self, from: data)
+                let decodedData = try JSONDecoder().decode(DrinksMainResponse.self, from: data)
                 self.drinkResponse = decodedData
                 serviceGroup.leave()
             }
@@ -43,15 +43,13 @@ class MyDrinkNetworkManger: MyDrinkListRetreviable {
                     return
 
                 }
-                completion(safeDrinkResponse)
+                completion(safeDrinkResponse.drinks.first)
             }
         }
     }
 
     func fetchDrinkDetails(completion: @escaping (DrinksResponse?) -> Void) {
-        let baseURL = "www.thecocktaildb.com/api/json/v1/1/random.php"
-
-
+        let baseURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
 
         let completeURL = baseURL
         guard let safeURL = URL(string: completeURL) else {
@@ -62,10 +60,11 @@ class MyDrinkNetworkManger: MyDrinkListRetreviable {
         let request = URLRequest(url: safeURL)
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             if let safeData = data {
-                let drinks = try? JSONDecoder().decode(DrinksResponse.self, from: safeData)
+                let drinks = try? JSONDecoder().decode(DrinksMainResponse.self, from: safeData)
                 self?.drinkInfo = drinks
-                completion(self?.drinkInfo)
-
+                DispatchQueue.main.async {
+                    completion(self?.drinkInfo?.drinks.first)
+                }
             }
 
         }

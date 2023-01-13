@@ -1,15 +1,71 @@
-//
-//  SearchViewTest.swift
-//  MyDrink
-//
-//  Created by Bronson van den Broeck on 2023/01/12.
-//
-
 import SwiftUI
+import URLImage
 
 struct SearchViewTest: View {
+
+    @StateObject private var networkModel = SearchNetworkModel()
+    @State private var filteredDrinks: [DrinksResponse] = []
+    @State private var search = ""
+
+    private func performSearch(keyWord: String) {
+        filteredDrinks = networkModel.drinkSearch.filter { drink in
+            drink.name.contains(keyWord)
+        }
+    }
+
+    private var drink: [DrinksResponse] {
+        filteredDrinks.isEmpty ? networkModel.drinkSearch: filteredDrinks
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                List(drink) { drink in
+                    HStack {
+                        if let imgURL = drink.strDrinkThumb,
+                           let url = URL(string: imgURL) {
+
+                            URLImage(url,
+                                     content: {image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                            })
+                            .frame(width: 50, height: 50)
+                            .cornerRadius(10)
+                        } else {
+                            PlaceHolderImageView()
+                        }
+
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(drink.name)
+                                .foregroundColor(.black)
+                                .font(.system(size: 18, weight: .semibold))
+                            Text(drink.strCategory)
+                                .foregroundColor(.gray)
+                                .font(.footnote)
+                        }
+                        Spacer()
+                        Button {
+
+                        } label: {
+                            Image(systemName: "heart.fill")
+                                .padding()
+                                .foregroundColor(Color.red)
+                        }
+                    }
+                }
+                .searchable(text: $search)
+                .onChange(of: search, perform: performSearch)
+                .task {
+                    do {
+                        try await networkModel.fetchDrinksTest()
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
+        }
     }
 }
 

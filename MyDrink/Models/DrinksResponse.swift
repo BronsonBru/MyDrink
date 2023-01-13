@@ -1,15 +1,15 @@
 import Foundation
 
-//struct DrinksResponse: Decodable {
-//    let drinks: [Drink]
-//
-//    private enum CodingKeys: String, CodingKey {
-//        case drinks = "drinks"
-//    }
-//}
+struct DrinksMainResponse: Decodable {
+    let drinks: [DrinksResponse]
+
+    private enum CodingKeys: String, CodingKey {
+        case drinks = "drinks"
+    }
+}
 
 class DrinksResponse: Decodable, Identifiable {
-    let id: Int
+    let id: String
     let name: String
     let strCategory: String
     let strAlcoholic: String
@@ -19,7 +19,7 @@ class DrinksResponse: Decodable, Identifiable {
     let strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15: String?
     let strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15: String?
 
-    init(id: Int = Int(),
+    init(id: String = String(),
          name: String = String(),
          strCategory: String = String(),
          strAlcoholic: String = String(),
@@ -176,7 +176,7 @@ class DrinksResponse: Decodable, Identifiable {
 
 extension DrinksResponse {
     static var dummyData: DrinksResponse {
-    .init( id: 11243,
+    .init( id: "11243",
            name: "Chocolate Black Russian",
               strCategory: "Ordinary Drink",
               strAlcoholic: "Alcoholic",

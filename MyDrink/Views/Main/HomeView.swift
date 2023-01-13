@@ -2,6 +2,8 @@ import SwiftUI
 import URLImage
 
 struct HomeView: View {
+    //dummy data
+    let drinks: DrinksResponse
     // animation properties
     @ObservedObject private var viewModel = DrinkViewModel()
 
@@ -18,7 +20,7 @@ struct HomeView: View {
             VStack(spacing: 0) {
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Drinks")
+                        Text("My Drinks")
                             .font(.callout)
                             .foregroundColor(.gray)
 
@@ -41,7 +43,8 @@ struct HomeView: View {
                                 currentItem = viewModel.randomDrinkResult
 
                             }
-                        } label: {
+                        }
+                label: {
                             CardView(item: viewModel.randomDrinkResult)
                             // for matched geometry effect
                                 .scaleEffect(currentItem?.id == viewModel.randomDrinkResult.id && showDetailPage ? 1 : 0.93)
@@ -49,12 +52,10 @@ struct HomeView: View {
                         .buttonStyle(ScaledButtonStyle())
                         .opacity(showDetailPage ? (currentItem?.id == viewModel.randomDrinkResult.id ? 1 : 0) : 1)
 
-
-
                     }
 
                 HStack{
-                        NavigationLink(destination: HomeView())
+                        NavigationLink(destination: HomeView(drinks: DrinksResponse.dummyData))
                     {
                         Text("Get a new drink!")
                             .font(.headline)
@@ -105,7 +106,7 @@ struct HomeView: View {
                                  content: {image in
                             image
                                 .resizable()
-                                .aspectRatio(contentMode: .fill)
+                                .aspectRatio(contentMode: .fit)
                         })
 //                        .frame(width: 100, height: 100)
                         .cornerRadius(10)
@@ -132,12 +133,12 @@ struct HomeView: View {
                 .clipShape(CustomCorner(corners: [.topLeft,.topRight], radius: 15))
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(item.name.uppercased())
+                    Text(item.strAlcoholic.uppercased())
                         .font(.callout)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
 
-                    Text(item.strInstructions)
+                    Text(item.name)
                         .font(.largeTitle.bold())
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
@@ -153,7 +154,7 @@ struct HomeView: View {
                              content: {image in
                         image
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            .aspectRatio(contentMode: .fit)
                     })
                     .frame(width: 60, height: 60)
                     .cornerRadius(15)
@@ -171,11 +172,11 @@ struct HomeView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
 
-                    Text(item.name.uppercased())
-                        .font(.caption)
-                        .foregroundColor(.white)
+//                    Text(drinks.name.uppercased())
+//                        .font(.caption)
+//                        .foregroundColor(.white)
 
-                    Text(item.strCategory.uppercased())
+                    Text(item.strGlass.uppercased())
                         .font(.caption)
                         .foregroundColor(.white)
                 }
@@ -185,14 +186,14 @@ struct HomeView: View {
                 Button {
 
                 } label: {
-                    Image(systemName: "heart")
+                    Image(systemName: "heart.fill")
                         .fontWeight(.bold)
                         .foregroundColor(.red)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 20)
                         .background{
                             Capsule()
-                                .fill(.ultraThinMaterial)
+                                .fill(.white)
                         }
                 }
             }
@@ -290,7 +291,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(drinks: DrinksResponse.dummyData)
 
     }
 }
