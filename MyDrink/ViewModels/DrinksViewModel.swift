@@ -20,17 +20,10 @@ class DrinkViewModel: ObservableObject, Identifiable {
     }
 }
 
-
-//import Foundation
-//import Combine
-//
-//class DrinkViewModel: ObservableObject, Identifiable {
-//    @Published var searchResults: [DrinksResponse] = []
-//    let network = MyDrinkNetworkManger()
-//    var drinkResponse : DrinksResponse?
-//    func fetchDrinks(result: String) {
-//        network.fetchDrinkDetails(search: result) { drinkItem in
-//            self.drinkResponse = drinkItem
-//        }
+//extension ContentView {
+//    final class ViewModel: ObservableObject {
+//        @Published var items = [Item]()
+//        @Published var showingFavs = false
+//        @Published var 
 //    }
 //}

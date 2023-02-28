@@ -6,6 +6,7 @@ struct HomeView: View {
     let drinks: DrinksResponse
     // animation properties
     @ObservedObject private var viewModel = DrinkViewModel()
+//    @EnvironmentObject var favourites: Favourites
 
     @State var currentItem: DrinksResponse?
     @State var showDetailPage: Bool = false
@@ -14,6 +15,8 @@ struct HomeView: View {
     @State var animationView: Bool = false
     @State var animationContent: Bool = false
     @State var scrollOffset: CGFloat = 0
+
+
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -55,8 +58,9 @@ struct HomeView: View {
                     }
 
                 HStack{
-                        NavigationLink(destination: HomeView(drinks: DrinksResponse.dummyData))
-                    {
+                    Button(action: {
+                        viewModel.fetchRandomResults()
+                                    }) {
                         Text("Get a new drink!")
                             .font(.headline)
                     }
@@ -108,16 +112,12 @@ struct HomeView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                         })
-//                        .frame(width: 100, height: 100)
+
                         .cornerRadius(10)
                     } else {
                         PlaceHolderImageView()
                     }
-//                    Image()
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fill)
-//                        .frame(width: size.width, height: size.height)
-//                        .clipShape(CustomCorner(corners: [.topLeft,.topRight], radius: 15))
+
                 }
                 .frame(height: 400)
 
@@ -161,20 +161,12 @@ struct HomeView: View {
                 } else {
                     PlaceHolderImageView()
                 }
-//                Image(item.strDrinkThumb)
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fill)
-//                    .frame(width: 60, height: 60)
-//                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(item.name.uppercased())
                         .fontWeight(.bold)
                         .foregroundColor(.white)
-
-//                    Text(drinks.name.uppercased())
-//                        .font(.caption)
-//                        .foregroundColor(.white)
 
                     Text(item.strGlass.uppercased())
                         .font(.caption)
@@ -184,9 +176,9 @@ struct HomeView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
 
                 Button {
-
+                    
                 } label: {
-                    Image(systemName: "heart.fill")
+                    Image(systemName: "heart")
                         .fontWeight(.bold)
                         .foregroundColor(.red)
                         .padding(.vertical, 8)

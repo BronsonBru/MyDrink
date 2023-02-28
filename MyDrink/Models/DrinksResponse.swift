@@ -2,6 +2,7 @@ import Foundation
 
 struct DrinksMainResponse: Decodable {
     let drinks: [DrinksResponse]
+//    var isLiked: Bool
 
     private enum CodingKeys: String, CodingKey {
         case drinks = "drinks"
@@ -18,6 +19,8 @@ class DrinksResponse: Decodable, Identifiable {
     let strDrinkThumb: String
     let strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15: String?
     let strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15: String?
+
+   
 
     init(id: String = String(),
          name: String = String(),
@@ -141,38 +144,6 @@ class DrinksResponse: Decodable, Identifiable {
 }
 
 
-
-
-
-//import Foundation
-//
-//// MARK: - Welcome
-//struct DrinksResponse: Codable {
-//    let drinks: [Drinks]
-//}
-//
-//// MARK: - Drink
-//struct Drinks: Codable, Identifiable {
-//    var id: Int?
-//    var strDrink: String?
-//    var strCategory: String?
-//    var strAlcoholic: String?
-//    var strGlass: String?
-//    var strInstructions: String?
-//    var strDrinkThumb: String?
-//    var strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15: String?
-//    var strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15: String?
-//
-//
-//
-//    private enum CodingKeys: String, CodingKey {
-//          case id = "idDrink"
-////          case name = "strDrink"
-////          case imageURL = "strDrinkThumb"
-////          case ingredients
-////          case instructions = "strInstructions"
-//      }
-//}
 
 extension DrinksResponse {
     static var dummyData: DrinksResponse {
