@@ -4,6 +4,7 @@ import URLImage
 struct DrinksView: View {
 
     let drinks: DrinksResponse
+    var viewModel: DrinkViewModel
 
     var body: some View {
         HStack {
@@ -32,7 +33,7 @@ struct DrinksView: View {
             }
             Spacer()
             Button {
-
+                
             } label: {
                 Image(systemName: "heart.fill")
                     .padding()
@@ -54,6 +55,6 @@ struct PlaceHolderImageView: View {
 
 struct DrinksView_Previews: PreviewProvider {
     static var previews: some View {
-        DrinksView(drinks: DrinksResponse.dummyData)
+        DrinksView(drinks: DrinksResponse.dummyData, viewModel: DrinkViewModel())
     }
 }

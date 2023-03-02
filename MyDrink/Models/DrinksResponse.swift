@@ -9,7 +9,11 @@ struct DrinksMainResponse: Decodable {
     }
 }
 
-class DrinksResponse: Decodable, Identifiable {
+class DrinksResponse: Decodable, Identifiable, Equatable {
+    static func == (lhs: DrinksResponse, rhs: DrinksResponse) -> Bool {
+        lhs.id == rhs.id
+    }
+
     let id: String
     let name: String
     let strCategory: String

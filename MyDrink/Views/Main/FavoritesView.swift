@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    @ObservedObject var favourite: DrinkViewModel
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .bottom) {
@@ -17,15 +18,19 @@ struct FavoritesView: View {
             }.padding(.horizontal)
              .padding(.bottom, 5)
             List {
-                DrinksView(drinks: DrinksResponse.dummyData)
+                ForEach(favourite.favouriteDrinks) { drink in
+                    DrinksView(drinks: drink, viewModel: favourite)
+                }
+            }.onAppear {
+
             }
             .navigationTitle("Favourites")
         }.padding(.vertical, 5)
     }
 }
 
-struct FavoritesView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoritesView()
-    }
-}
+//struct FavoritesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FavoritesView()
+//    }
+//}

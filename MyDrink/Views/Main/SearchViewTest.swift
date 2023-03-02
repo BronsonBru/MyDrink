@@ -6,6 +6,7 @@ struct SearchViewTest: View {
     @StateObject private var networkModel = SearchNetworkModel()
     @State private var filteredDrinks: [DrinksResponse] = []
     @State private var search = ""
+    @ObservedObject var favourite: DrinkViewModel
 
     private func performSearch(keyWord: String) {
         filteredDrinks = networkModel.drinkSearch.filter { drink in
@@ -47,9 +48,9 @@ struct SearchViewTest: View {
                         }
                         Spacer()
                         Button {
-
+                            favourite.addToFavourites(drink: drink)
                         } label: {
-                            Image(systemName: "heart.fill")
+                            Image(systemName: favourite.isDrinkFavourite(drink: drink) ? "heart.fill" : "heart")
                                 .padding()
                                 .foregroundColor(Color.red)
                         }
@@ -69,8 +70,8 @@ struct SearchViewTest: View {
     }
 }
 
-struct SearchViewTest_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchViewTest()
-    }
-}
+//struct SearchViewTest_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchViewTest()
+//    }
+//}

@@ -33,37 +33,6 @@ struct SearchView: View {
                 .foregroundColor(.gray)
                 
             }
-//            .searchable(text: $viewModel.searchText) {
-//                List(viewModel.searchResults) {
-//                               drink in
-//                                    HStack {
-//
-//                                        VStack(alignment: .leading) {
-//                                            Text(drink.name ?? "")
-//                                                .font(.headline)
-//                                            Text(drink.strCategory ?? "")
-//                                                .font(.subheadline)
-//                                            Text(drink.strAlcoholic ?? "")
-//                                                .font(.subheadline)
-//                                        }
-//                                    }.task {
-//                                        do {
-//                                            try await viewModel.fetchSearchResults()
-//                                        } catch {
-//                                            print(error)
-//                                        }
-//                                    }
-//
-//
-//                            }
-//            }
-
-//                    .onChange(of: viewModel.searchText) { searchItem in
-//                        filteredDrinks = viewModel.searchResults.filter({ drink in
-//
-//                        }) ?? []
-//                    }
-
         }
         .padding(.vertical, 5)
     }

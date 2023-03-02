@@ -6,6 +6,7 @@ class DrinkViewModel: ObservableObject, Identifiable {
     @Published var searchText = String()
     let network = MyDrinkNetworkManger()
     @Published var randomDrinkResult = DrinksResponse()
+    @Published var favouriteDrinks = [DrinksResponse]()
 
     func fetchSearchResults() {
         network.fetchDrinksSearch(search: searchText) { result in
@@ -18,12 +19,14 @@ class DrinkViewModel: ObservableObject, Identifiable {
             self.randomDrinkResult = details ?? DrinksResponse()
         }
     }
-}
 
-//extension ContentView {
-//    final class ViewModel: ObservableObject {
-//        @Published var items = [Item]()
-//        @Published var showingFavs = false
-//        @Published var 
-//    }
-//}
+    func isDrinkFavourite(drink: DrinksResponse) -> Bool {
+        return favouriteDrinks.contains(drink)
+    }
+
+    func addToFavourites(drink: DrinksResponse) {
+        if !isDrinkFavourite(drink: drink) {
+            self.favouriteDrinks.append(drink)
+        }
+    }
+}

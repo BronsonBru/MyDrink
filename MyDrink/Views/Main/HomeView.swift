@@ -5,7 +5,6 @@ struct HomeView: View {
     //dummy data
     let drinks: DrinksResponse
     // animation properties
-    @ObservedObject private var viewModel = DrinkViewModel()
 //    @EnvironmentObject var favourites: Favourites
 
     @State var currentItem: DrinksResponse?
@@ -15,6 +14,7 @@ struct HomeView: View {
     @State var animationView: Bool = false
     @State var animationContent: Bool = false
     @State var scrollOffset: CGFloat = 0
+    @ObservedObject var viewModel: DrinkViewModel
 
 
 
@@ -51,6 +51,7 @@ struct HomeView: View {
                             CardView(item: viewModel.randomDrinkResult)
                             // for matched geometry effect
                                 .scaleEffect(currentItem?.id == viewModel.randomDrinkResult.id && showDetailPage ? 1 : 0.93)
+                    
                         }
                         .buttonStyle(ScaledButtonStyle())
                         .opacity(showDetailPage ? (currentItem?.id == viewModel.randomDrinkResult.id ? 1 : 0) : 1)
@@ -76,6 +77,7 @@ struct HomeView: View {
                 //end
             }
             .padding(.vertical, 5)
+
         }
         .onAppear {
             viewModel.fetchRandomResults()
@@ -88,10 +90,11 @@ struct HomeView: View {
         }
         .background(alignment: .top) {
             RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(Color(.black))
+                .fill(Color(.white))
                 .frame(height: animationView ? nil : 350, alignment: .top)
                 .opacity(animationView ? 1 : 0)
                 .ignoresSafeArea()
+
         }
     }
     //CardView
@@ -101,7 +104,7 @@ struct HomeView: View {
             ZStack(alignment: .topLeading) {
 
                 //banner image
-                GeometryReader{proxy in
+                GeometryReader { proxy in
                     let size = proxy.size
                     if let imgURL = item.strDrinkThumb,
                        let url = URL(string: imgURL) {
@@ -120,17 +123,28 @@ struct HomeView: View {
 
                 }
                 .frame(height: 400)
+                .clipShape(CustomCorner(corners: [.topLeft,.topRight], radius: 25))
 
 
                 LinearGradient(colors: [
-                    .black.opacity(1),
+                    .white.opacity(1),
+                    .white.opacity(1),
+                    .white.opacity(0.9),
+                    .white.opacity(0.6),
+                    .white.opacity(0.4),
+                    .white.opacity(0.3),
+                    .white.opacity(0.2),
+                    .white.opacity(0.1),
+                    .white.opacity(0),
+                    .white.opacity(0),
+                    .white.opacity(0),
+                    .black.opacity(0.1),
+                    .black.opacity(0.2),
                     .black.opacity(0.3),
-                    .black.opacity(0.25),
-                    .black.opacity(0.15),
-                    .gray.opacity(0.3),
-                    .black.opacity(1),
+                    .black.opacity(0.4),
+                    .black.opacity(0.5),
                 ], startPoint: .bottom, endPoint: .top)
-                .clipShape(CustomCorner(corners: [.topLeft,.topRight], radius: 15))
+                .clipShape(CustomCorner(corners: [.topLeft,.topRight], radius: 25))
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text(item.strAlcoholic.uppercased())
@@ -155,9 +169,11 @@ struct HomeView: View {
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+
                     })
                     .frame(width: 60, height: 60)
                     .cornerRadius(15)
+                    .shadow(color: .black.opacity(0.3), radius: 3, x: 3, y: 3)
                 } else {
                     PlaceHolderImageView()
                 }
@@ -166,19 +182,19 @@ struct HomeView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(item.name.uppercased())
                         .fontWeight(.bold)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
 
                     Text(item.strGlass.uppercased())
                         .font(.caption)
-                        .foregroundColor(.white)
-                }
+                        .foregroundColor(.black)
+                }.shadow(color: .black.opacity(0.1), radius: 3, x: 3, y: 3)
                 .foregroundColor(.primary)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
                 Button {
-                    
+                    viewModel.addToFavourites(drink: item)
                 } label: {
-                    Image(systemName: "heart")
+                    Image(systemName: viewModel.isDrinkFavourite(drink: item) ? "heart.fill" : "heart")
                         .fontWeight(.bold)
                         .foregroundColor(.red)
                         .padding(.vertical, 8)
@@ -187,14 +203,14 @@ struct HomeView: View {
                             Capsule()
                                 .fill(.white)
                         }
-                }
+                }.shadow(color: .black.opacity(0.1), radius: 3, x: 3, y: 3)
             }
             .padding([.horizontal, .bottom])
         }
 
         .background{
             RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(Color(.black))
+                .fill(Color(.white))
         }
         .matchedGeometryEffect(id: item.id, in: animation)
     }
@@ -225,7 +241,7 @@ struct HomeView: View {
                         Text(item.strIngredient2 ?? "")
                         Text(item.strIngredient3 ?? "")
                     }
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .padding()
                     VStack(alignment: .leading) {
                         Text(item.strMeasure1 ?? "")
@@ -237,7 +253,7 @@ struct HomeView: View {
                 }
                 }
                 .toolbar(.hidden,for: .tabBar)
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .offset(y: scrollOffset > 0 ? scrollOffset : 0)
                     .opacity(animationContent ? 1 : 0)
                     .scaleEffect(animationView ? 1 : 0, anchor: .top)
@@ -281,9 +297,9 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(drinks: DrinksResponse.dummyData)
-
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(drinks: DrinksResponse.dummyData)
+//
+//    }
+//}
